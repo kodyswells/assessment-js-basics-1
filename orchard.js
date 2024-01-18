@@ -48,8 +48,15 @@ const pinkPrice = .55
 
     Log `totalAcres` to the console.
 */
+// I created a variable that will store the total number of acres picked.
+let totalAcres = 0;
 
-// CODE HERE
+// Created a for loop, that will run 7 times, and it will add each of the acres index number to the total number of the variable we created.
+for(let i = 0; i < 7; i++) {
+  totalAcres += fujiAcres[i] + galaAcres[i] + pinkAcres[i];
+}
+// We now display the total number of acres picked for the week.
+console.log(totalAcres);
 
 
 
@@ -66,8 +73,10 @@ const pinkPrice = .55
 
     Log `averageDailyAcres` to the console.
 */
+// Created a new variable, and set it equal the total number of acres picked in the week, and divided it by 7 to find the average of acres picked for each day.
 
-// CODE HERE
+let averageDailyAcres = totalAcres / 7;
+console.log(averageDailyAcres);
 
 
 
@@ -105,7 +114,12 @@ const pinkPrice = .55
 let acresLeft = 174 
 let days = 0
 
-// CODE HERE
+//while there are acres left, you will add 1 counter to the days tally, and then we tack the total acres left and subtract the average daily acres we had found previously. We then will display the amount of days it will take to harvest all of those acres at the end of it all.
+while (acresLeft > 0) {
+  days += 1;
+  acresLeft -= averageDailyAcres;
+}
+console.log(days);
 
 
 
@@ -133,11 +147,23 @@ let days = 0
     values to the new arrays.
 */
 
-// CODE HERE
+let fujiTons = [];
+let galaTons = [];
+let pinkTons = [];
 
-// let fujiTons =
-// let galaTons =
-// let pinkTons =
+const tonsPerAcre = 6.5;
+// This runs as many times as there were days in the week. I add the index value (which is the amount of acres harvested on each day) and multiply that by the ammount of tons per acre. I do this for each day and push it into an array. I do this for each type of apple.
+for(let i = 0; i < 7; i++) {
+ fujiTons.push(fujiAcres[i] * tonsPerAcre);
+ galaTons.push(galaAcres[i] * tonsPerAcre);
+ pinkTons.push(pinkAcres[i] * tonsPerAcre);
+}
+// I then display the tons for each apple type.
+console.log(fujiTons);
+console.log(galaTons);
+console.log(pinkTons);
+
+
 
 
 
@@ -160,11 +186,24 @@ let days = 0
     Hint: there are 2000 pounds in a ton.
 */
 
-// CODE HERE 
+let fujiSum = 0;
+let galaSum = 0;
+let pinkSum = 0;
 
-// let fujiPounds =
-// let galaPounds =
-// let pinkPounds =
+// I add the corolating index number to a new variable and add them all together, then I take that variable and multiply it by 2000 to get the amount of pounds for each apple type, then I console log the results.
+
+for (let i = 0; i < 7; i++) {
+  fujiSum += fujiTons[i];
+  galaSum += galaTons[i];
+  pinkSum += pinkTons[i];
+}
+let fujiPounds = fujiSum * 2000;
+let galaPounds = galaSum * 2000;
+let pinkPounds = pinkSum * 2000;
+
+console.log(fujiPounds);
+console.log(galaPounds);
+console.log(pinkPounds);
 
 
 
@@ -187,11 +226,14 @@ let days = 0
     console. 
 */
 
-// CODE HERE
+// I set the profit variable equal to the total pounds, and multiply them by the price for the equivalent type of apple, to find the total profit for each apple type. I then display the total profit for each apple.
+let fujiProfit = fujiPounds * fujiPrice;
+let galaProfit = galaPounds * galaPrice;
+let pinkProfit = pinkPounds * pinkPrice;
 
-// let fujiProfit =
-// let galaProfit =
-// let pinkProfit =
+console.log(fujiProfit);
+console.log(galaProfit);
+console.log(pinkProfit);
 
 
 
@@ -207,5 +249,6 @@ let days = 0
 
     Log `totalProfit` to the console.
 */
-
-// CODE HERE
+// Created a variable that is the total profit of all the apple types combined into one number, then I display the total profit.
+let totalProfit = fujiProfit + galaProfit + pinkProfit;
+console.log(totalProfit);
